@@ -1,0 +1,11 @@
+Django
+djangorestframework
+django-filter
+django-allauth
+dj-rest-auth
+celery
+redis
+psycopg2-binary
+Pillow
+requests
+django-cors-headers

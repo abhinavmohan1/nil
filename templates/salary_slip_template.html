@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Slip</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .logo { max-width: 200px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .amount { text-align: right; }
+        .footer { margin-top: 20px; font-size: 0.8em; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://nationalinstituteoflanguage.in/wp-content/uploads/2024/10/Edutech.png" alt="Company Logo" class="logo">
+        <h2>NIL Edutech (P) Limited</h2>
+        <p>L-43, Sec E, LDA, Kanpur Road, Lucknow : 226012</p>
+        <p>Reg No. 151255 | CIN: U80902UP2021PTC151255</p>
+        <p>Phone: +91 9569 285 185</p>
+    </div>
+
+    <h1>Salary Slip</h1>
+    <p><strong>Employee Name:</strong> {{ user.get_full_name }}</p>
+    <p><strong>Employee ID:</strong> {{ employee_id }}</p>
+    <p><strong>Month:</strong> {{ month }}/{{ year }}</p>
+
+    <h2>Salary Details</h2>
+    <table>
+        <tr>
+            <th>Component</th>
+            <th>Earnings (₹)</th>
+            <th>Deductions (₹)</th>
+        </tr>
+        <tr>
+            <td>Base Salary</td>
+            <td class="amount">{{ calculation_details.base_salary }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Group Class Compensation</td>
+            <td class="amount">{{ calculation_details.additions.group_class_compensation }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Performance Incentive</td>
+            <td class="amount">{{ calculation_details.additions.performance_incentive }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Arrears</td>
+            <td class="amount">{{ calculation_details.additions.arrears }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Advance</td>
+            <td class="amount">{{ calculation_details.additions.advance }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Performance Depreciation</td>
+            <td></td>
+            <td class="amount">{{ calculation_details.deductions.performance_depreciation }}</td>
+        </tr>
+        <tr>
+            <td>TDS</td>
+            <td></td>
+            <td class="amount">{{ calculation_details.deductions.tds }}</td>
+        </tr>
+        <tr>
+            <td>PF</td>
+            <td></td>
+            <td class="amount">{{ calculation_details.deductions.pf }}</td>
+        </tr>
+        <tr>
+            <td>Advance Recovery</td>
+            <td></td>
+            <td class="amount">{{ calculation_details.deductions.advance_recovery }}</td>
+        </tr>
+        <tr>
+            <td>Loss Recovery</td>
+            <td></td>
+            <td class="amount">{{ calculation_details.deductions.loss_recovery }}</td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <th class="amount">{{ calculation_details.total_earnings }}</th>
+            <th class="amount">{{ calculation_details.total_deductions }}</th>
+        </tr>
+        <tr>
+            <th colspan="2">Net Salary</th>
+            <th class="amount">{{ calculation_details.total_salary }}</th>
+        </tr>
+    </table>
+
+    {% if user.role == 'TRAINER' %}
+    <h2>Trainer Details</h2>
+    <p><strong>Total Hours Worked:</strong> {{ calculation_details.trainer_details.total_hours }}</p>
+    <p><strong>Hourly Rate:</strong> ₹{{ calculation_details.trainer_details.hourly_rate }}</p>
+    {% endif %}
+
+    <div class="footer">
+        <p>This is a computer generated document. It does not require signatures.</p>
+        <p>Hash: {{ document_hash }}</p>
+    </div>
+</body>
+</html>

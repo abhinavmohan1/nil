@@ -1,0 +1,81 @@
+Metadata-Version: 2.1
+Name: django-bigbluebutton
+Version: 0.5.9
+Summary: A Django integration APP to connect django projects to Big Blue Button ;)
+Home-page: https://github.com/Execut3/django-bigbluebutton
+Author: Execut3
+Author-email: execut3.binarycodes@gmail.com
+License: GPT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: Django (>=2.0)
+Requires-Dist: requests (>=2.0)
+Requires-Dist: djangorestframework (>=3.0.0)
+
+# django-bigbluebutton
+
+A Django Application for better interaction of Django projects with Big Blue Button APIs.
+
+### Requirements
+
+To use this package following needed. if not provided will be installed automatically.
+```
+Django>=2.0
+requests>=2.0
+```
+
+### Installation
+
+**Note:** This package is well tested on `django>=2.0`. But if you are using older versions can be
+used with minor changes in structure.
+
+install using pip:
+```bash
+pip install django-bigbluebutton
+```
+
+### Usage
+Register app in `settings.py`
+
+```python
+INSTALLED_APPS = [
+    "django_bigbluebutton",
+]
+```
+
+Now should define you Big Blue Button Server core configs in `settings.py`:
+
+```python
+BBB_API_URL = 'https://test.com/bigbluebutton/api/'
+BBB_SECRET_KEY = 'abcdefgabcdefgabcdefgabcdefgabcdefg'
+```
+
+Next apply migrations:
+```bash
+python manage.py migrate
+```
+
+And finally run test:
+
+```bash
+python manage.py test
+```
+
+You can follow `tests.py` file to see how to use this package.
+
+### Admin Integration
+
+By installing this app in your django project, A admin section will be added named `Meeting`.
+Under this section you can see list of open meetings, join meeting, create join link for other
+users with moderator or attendee permissions.
+
+Also to enable update state of each meeting (sync with bigbluebutton) set below variable in 
+`settings.py`:
+
+```python
+UPDATE_RUNNING_ON_EACH_CALL = True
+```
+
+So whenever you open list of meetings in django admin, it will update state of all meetings in database
+with result of `getMeetings` API from bigbluebutton.
+
