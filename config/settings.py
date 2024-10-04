@@ -74,9 +74,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb2',
-        'USER': 'myuser',
-        'PASSWORD': 'mypassword',
+        'NAME': 'nildb',
+        'USER': 'niladmin',
+        'PASSWORD': 'Scrubs171#',
         'HOST': 'localhost',
         'PORT': '5432',
         
@@ -99,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'IST'
 USE_I18N = True
 USE_TZ = True
 
@@ -225,6 +225,7 @@ CORS_ALLOW_ALL_ORIGINS = False  # Set to True to allow all origins (not recommen
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React default port
     "http://127.0.0.1:3000",
+    "https://nilconnect.in",
     # Add any other origins (frontend URLs) you want to allow
 ]
 
